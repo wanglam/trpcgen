@@ -1,0 +1,18 @@
+var Config = require("./../config.js");
+
+var $obj.get_name = {
+#for func in $obj.functions
+    $(func.get_realfunction_name):function($func.get_javascript_params,callbacks) {
+		JsonRPC.do(
+			Config.API_SHOPPINGGUIDE,
+			"$(func.name)",
+			{$func.get_javascript_data},
+			callbacks
+		);
+    },
+#end for
+}
+
+if(typeof module !== undefined){
+	module.exports = $obj.get_name	
+}

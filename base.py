@@ -52,6 +52,28 @@ def extend_func(func):
 		return ", ".join(params)
 	func.get_java_params = get_java_params
 
+	def get_javascript_params():
+		params = []
+		for p in func.arguments:
+			params.append("%s" % p.name)
+
+		return ", ".join(params)
+
+	def get_javascript_data():
+		params = []
+		for p in func.arguments:
+			params.append("%s:%s"%(p.name,p.name))
+		return ",".join(params)
+
+	def get_realfunction_name():
+		funcs = ("%s"%func.name).split(".")
+		return funcs[len(funcs)-1]
+
+	func.get_java_params = get_java_params
+	func.get_javascript_params = get_javascript_params
+	func.get_javascript_data = get_javascript_data
+	func.get_realfunction_name = get_realfunction_name
+
 	def get_java_return_type():
 		return to_java_type(str(func.type))
 	func.get_java_return_type = get_java_return_type
